@@ -84,7 +84,11 @@ const ContactPage = () => {
 				Please fill in your name, email and comment and we will return your
 				inquiry asap.
 			</p>
-			<form onSubmit={onSubmit} className="flex flex-col gap-4">
+			<form
+				onSubmit={onSubmit}
+				className="flex flex-col gap-4"
+				data-netlify="true"
+			>
 				<div className="flex items-center h-10  px-3 bg-slate-200 text-slate-400">
 					<FaPencilAlt />
 					<input
