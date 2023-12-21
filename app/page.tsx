@@ -4,7 +4,7 @@ export default function Home() {
 	const handleClick = () => {};
 
 	return (
-		<div className="flex flex-col gap-20">
+		<div className="flex flex-col gap-24">
 			<div className="flex justify-center pt-10 gap-16">
 				<div className="flex flex-col mt-16">
 					<h1 className="text-5xl font-thin text-white">Welcome, I&apos;m</h1>
@@ -23,7 +23,7 @@ export default function Home() {
 						View My Portfolio
 					</button>
 				</div>
-				<div className="">
+				<div className="mt-10">
 					<img
 						src="/amanda.jpg"
 						alt="Amanda"

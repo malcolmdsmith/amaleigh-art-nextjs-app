@@ -3,8 +3,10 @@ import Image from "next/image";
 
 const AboutPage = () => {
 	return (
-		<div className="flex flex-col items-center">
-			<h2 className="text-white text-4xl  mb-6 mt-20">About Amaleigh</h2>
+		<div className="flex flex-col">
+			<h2 className="text-white text-4xl  ml-8 mb-16 mt-20">
+				About Amaleigh Art
+			</h2>
 			<div className="flex flex-col sm:flex-row gap-8">
 				{/* <h2 className="text-white mb-2">About Amaleigh</h2> */}
 				<Image
@@ -21,8 +23,6 @@ const AboutPage = () => {
 					having expanded into painting and exploring the colour play of the
 					environment around us. Using mainly acrylics I am loving inks,
 					watercolour and different ways of mixed media.
-					<br />
-					Email: amaleigh_art@outlook.com
 				</p>
 			</div>
 		</div>

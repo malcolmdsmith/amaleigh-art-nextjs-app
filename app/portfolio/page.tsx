@@ -38,7 +38,7 @@ const PortfolioPage = () => {
 
 	return (
 		<div className="mt-20 text-white">
-			<h1 className="text-xl">My Portfolio</h1>
+			<h1 className="text-4xl">My Portfolio</h1>
 		</div>
 	);
 };

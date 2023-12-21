@@ -37,7 +37,7 @@ const NavBar = () => {
 
 	return (
 		<div className="flex justify-between items-center w-full h-20 px-2 bg-navy nav">
-			<div className="bg-gradient-to-r from-darkgold via-lightgold to-darkgold">
+			<div className="ml-4 bg-gradient-to-r from-darkgold via-lightgold to-darkgold">
 				<div className="px-4 py-2 m-1 bg-navy">
 					{/* <h1 className="text-5xl font-signature ml-2"><a className="link-underline hover:transition ease-in-out delay-150 hover:underline hover:decoration-solid" href="">Logo</a></h1> */}
 					<h1 className="text-4xl font-signature font-serif bg-gradient-to-r from-darkgold via-lightgold to-darkgold text-transparent bg-clip-text">
