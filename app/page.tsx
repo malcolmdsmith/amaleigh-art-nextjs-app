@@ -14,7 +14,7 @@ export default function Home() {
 						className="rounded-full"
 					/>
 				</div>
-				<div className="flex flex-col mt-16">
+				<div className="flex flex-col mt-10">
 					<h1 className="text-5xl font-thin text-white">Welcome, I&apos;m</h1>
 					<h1 className="text-5xl font-thin text-white italic">
 						Amanda Elwell
@@ -32,9 +32,9 @@ export default function Home() {
 					</button>
 				</div>
 			</div>
-			<div className="flex flex-col items-center">
+			<div className="flex flex-col md:w-[640px] m-auto items-center">
 				<h2 className="text-white mb-4">A sample of my artwork.</h2>
-				<div className="flex flex-wrap md:w-720!important justify-center gap-2 text-white">
+				<div className="flex flex-wrap justify-center gap-2 text-white">
 					<div className="flex flex-col items-center">
 						<img
 							src="/wave-wash.jpg"

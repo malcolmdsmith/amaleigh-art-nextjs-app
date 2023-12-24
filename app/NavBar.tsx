@@ -28,11 +28,11 @@ const NavBar = () => {
 			link: "contact",
 			path: "/contact",
 		},
-		{
-			id: 5,
-			link: "admin",
-			path: "/admin",
-		},
+		// {
+		// 	id: 5,
+		// 	link: "admin",
+		// 	path: "/admin",
+		// },
 	];
 
 	return (

@@ -78,7 +78,7 @@ const ContactPage = () => {
 	};
 
 	return (
-		<div className="flex flex-col w-2/3 gap-10">
+		<div className="flex flex-col w-full md:w-2/3 gap-10">
 			<h1 className="text-white text-3xl">Contact</h1>
 			<p className="text-white">
 				Please fill in your name, email and comment and we will return your
@@ -88,6 +88,7 @@ const ContactPage = () => {
 				onSubmit={onSubmit}
 				className="flex flex-col gap-4"
 				data-netlify="true"
+				name="contact-info"
 			>
 				<div className="flex items-center h-10  px-3 bg-slate-200 text-slate-400">
 					<FaPencilAlt />

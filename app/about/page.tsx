@@ -4,7 +4,7 @@ import Image from "next/image";
 const AboutPage = () => {
 	return (
 		<div className="flex flex-col">
-			<h2 className="text-white text-4xl  ml-8 mb-16 mt-20">
+			<h2 className="text-white text-2xl md:text-4xl  ml-4 mb-12 mt-20">
 				About Amaleigh Art
 			</h2>
 			<div className="flex flex-col sm:flex-row gap-8">
