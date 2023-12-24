@@ -73,8 +73,9 @@ const ContactPage = () => {
 		// setSaving(false);
 	});
 
-	const handleRecaptchaChange = () => {
+	const handleRecaptchaChange = (e: string | null) => {
 		// This function will be called when reCAPTCHA is verified
+		console.log(e);
 		setIsRecaptchaVerified(true);
 	};
 
@@ -127,9 +128,9 @@ const ContactPage = () => {
 				</div>
 				<ReCAPTCHA
 					sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-					onChange={() => setIsRecaptchaVerified(true)}
+					onChange={handleRecaptchaChange}
 				/>
-				<div className="g-recaptcha" data-sitekey="your_site_key"></div>
+				{/* <div className="g-recaptcha" data-sitekey="your_site_key"></div> */}
 				<button className="bg-red-600 text-white w-56 rounded-full h-12">
 					Submit
 				</button>
