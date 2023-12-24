@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { FaPencilAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { ReCAPTCHA } from "react-google-recaptcha";
 
 interface Contact {
 	comment: string;
@@ -124,6 +125,11 @@ const ContactPage = () => {
 						{...register("comment", { required: false })}
 					></textarea>
 				</div>
+				<ReCAPTCHA
+					sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+					onChange={() => setIsRecaptchaVerified(true)}
+				/>
+				<div className="g-recaptcha" data-sitekey="your_site_key"></div>
 				<button className="bg-red-600 text-white w-56 rounded-full h-12">
 					Submit
 				</button>
