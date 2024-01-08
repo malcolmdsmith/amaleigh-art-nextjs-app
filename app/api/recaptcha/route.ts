@@ -5,13 +5,13 @@ interface CaptchaValidationResponse {
 	success: boolean;
 }
 
-export const config = {
-	api: {
-		bodyParser: {
-			sizeLimit: "1mb",
-		},
-	},
-};
+// export const config = {
+// 	api: {
+// 		bodyParser: {
+// 			sizeLimit: "1mb",
+// 		},
+// 	},
+// };
 
 // export const captchaVerificationHandler = async (
 export async function POST(req: NextRequest) {
