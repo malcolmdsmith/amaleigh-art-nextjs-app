@@ -6,7 +6,9 @@ const PortfolioPage = () => {
 	useEffect(() => {
 		let width = screen.width;
 		let size = "";
-		if (width > 500) size = "5, 4";
+		if (width > 1024) size = "5, 4";
+		else if (width > 768) size = "5,3";
+		else if (width > 500) size = "5,2";
 		else size = "5, 1";
 		const initScript = document.createElement("script");
 		initScript.id = "rb-xzfcxvzx";

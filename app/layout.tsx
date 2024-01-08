@@ -23,10 +23,13 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={inter.className}>
-				<div className="max-w-screen-lg m-auto">
+				<div className="max-w-screen-lg m-auto px-4 pt-4">
 					<NavBar />
-					<div className="bg-gradient-to-b from-navy via-darkishBlue to-navy   p-6">
+					<div className="bg-gradient-to-b from-navy via-darkishBlue to-navy  mb-20 p-6">
 						{children}
+					</div>
+					<div className="fixed bottom-0 w-full left-0 overflow-hidden flex justify-center items-center bg-black text-slate-500 h-14">
+						&copy; copyright 2024
 					</div>
 				</div>
 			</body>

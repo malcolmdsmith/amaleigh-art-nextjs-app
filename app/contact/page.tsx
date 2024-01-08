@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { FaPencilAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { ReCAPTCHA } from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface Contact {
 	comment: string;
@@ -34,11 +34,11 @@ const contactSchema = z.object({
 
 const ContactPage = () => {
 	const router = useRouter();
-	const [isRecaptchaVerified, setIsRecaptchaVerified] = useState(true);
+	const [recaptchaResponse, setRecaptchaResponse] = useState("");
 	const defaultValues = {
-		comment: "",
-		name: "",
-		email: "",
+		comment: null,
+		name: "Malcolm",
+		email: "malcolms65@gmail.com",
 	};
 
 	const {
@@ -50,11 +50,32 @@ const ContactPage = () => {
 		formState: { errors },
 	} = useForm<Contact>({
 		resolver: zodResolver(contactSchema),
-		defaultValues: defaultValues,
+		//defaultValues: defaultValues,
 	});
 
 	const onSubmit = handleSubmit(async (data: Contact) => {
-		if (isRecaptchaVerified === false) return;
+		try {
+			const response = await fetch("/api/recaptcha", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ recaptchaResponse }),
+			});
+
+			if (response.ok) {
+				const data = await response.json();
+				// console.log("Verification result:", data);
+				if (data.success) router.push("/success");
+				// Handle the result as needed (e.g., show success message, redirect, etc.)
+			} else {
+				console.error("Failed to verify reCAPTCHA:", response.statusText);
+				// Handle the error (e.g., show error message to the user)
+			}
+		} catch (error) {
+			console.error("Error during reCAPTCHA verification:", error);
+			// Handle the error (e.g., show error message to the user)
+		}
 
 		const data_encoded = encode({ ...data });
 
@@ -69,14 +90,12 @@ const ContactPage = () => {
 				router.push("/success");
 			})
 			.catch((error) => alert(error));
-
-		// setSaving(false);
 	});
 
 	const handleRecaptchaChange = (e: string | null) => {
 		// This function will be called when reCAPTCHA is verified
-		console.log(e);
-		setIsRecaptchaVerified(true);
+		// console.log(e);
+		setRecaptchaResponse(e!);
 	};
 
 	return (
@@ -93,7 +112,6 @@ const ContactPage = () => {
 				name="contact-info"
 			>
 				<div className="flex items-center h-10  px-3 bg-slate-200 text-slate-400">
-					<FaPencilAlt />
 					<input
 						type="text"
 						placeholder="Name"
@@ -101,9 +119,10 @@ const ContactPage = () => {
 						{...register("name", { required: true })}
 					/>
 				</div>
-				{errors.name && <p className="text-red-700">{errors.name?.message}</p>}
+				{errors.name && (
+					<p className="text-yellow-300">{errors.name?.message}</p>
+				)}
 				<div className="flex items-center h-10 px-3 bg-slate-200 text-slate-400">
-					<FaPencilAlt />
 					<input
 						type="email"
 						placeholder="Email"
@@ -112,20 +131,20 @@ const ContactPage = () => {
 					/>
 				</div>
 				{errors.email && (
-					<p className="text-red-700">{errors.email?.message}</p>
+					<p className="text-yellow-300">{errors.email?.message}</p>
 				)}
-				<div className="flex flex-col bg-slate-200">
-					<h3 className="flex m-1 items-center text-slate-400">
-						<FaPencilAlt />
-						&nbsp;&nbsp;Comment
-					</h3>
+				<div className="flex flex-col px-3 bg-slate-200">
 					<textarea
-						rows={12}
+						rows={8}
 						cols={40}
 						className="bg-slate-200"
+						placeholder="Comment"
 						{...register("comment", { required: false })}
 					></textarea>
 				</div>
+				{errors.comment && (
+					<p className="text-yellow-300">{errors.comment?.message}</p>
+				)}
 				<ReCAPTCHA
 					sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
 					onChange={handleRecaptchaChange}
